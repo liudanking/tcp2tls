@@ -38,6 +38,7 @@ func (t *Tunnel) pipe(dst, src net.Conn, c chan int64) {
 }
 
 func (t *Tunnel) HandleConn(conn *net.TCPConn) {
+	log.Println("handle a new connection, conn:%d", atomic.LoadInt32(&t.connCount))
 	start := time.Now()
 	atomic.AddInt32(&t.connCount, 1)
 	defer atomic.AddInt32(&t.connCount, -1)
@@ -95,7 +96,7 @@ func main() {
 	}
 	tunnel = NewTunnel(remoteAddr, strictSecure)
 
-	log.Println("start serving ...")
+	log.Println("start serving at [%s]", localAddr)
 	for {
 		conn, err := listener.AcceptTCP()
 		if err != nil {
