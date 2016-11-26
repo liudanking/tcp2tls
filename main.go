@@ -96,7 +96,7 @@ func main() {
 	}
 	tunnel = NewTunnel(remoteAddr, strictSecure)
 
-	log.Println("start serving at [%s]", localAddr)
+	log.Printf("start serving at [%s]", localAddr)
 	for {
 		conn, err := listener.AcceptTCP()
 		if err != nil {
