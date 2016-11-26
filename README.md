@@ -2,7 +2,7 @@
 
 ## Install 
 
-`go get github/liudanking/tcp2tls`
+`go get github.com/liudanking/tcp2tls`
 
 ## Run 
 
